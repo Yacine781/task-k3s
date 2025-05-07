@@ -1,0 +1,33 @@
+auth:
+  rootPassword: rootpassword
+  database: taskmanager
+  username: user
+  password: password
+
+primary:
+  persistence:
+    enabled: true
+    size: 5Gi
+
+secondary:
+  replicaCount: 2
+  persistence:
+    enabled: true
+    size: 5Gi
+
+service:
+  type: ClusterIP
+  ports:
+    mysql: 3306
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 250m
+  limits:
+    memory: 512Mi
+    cpu: 500m
+
+galera:
+  bootstrap:
+    forceSafeToBootstrap: true
